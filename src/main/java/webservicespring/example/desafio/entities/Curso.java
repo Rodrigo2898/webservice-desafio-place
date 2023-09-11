@@ -1,15 +1,16 @@
 package webservicespring.example.desafio.entities;
 
 import java.io.Serializable;
-// import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -28,10 +29,22 @@ public class Curso implements Serializable {
     @Column(nullable = false)
     private String nivelCurso;
 
-    @OneToMany
-    @JoinColumn(name = "ID_CURSO")
-    private List<Turma> turmas;
-    
+    @JsonIgnore
+    @OneToMany(mappedBy = "curso")
+    private List<Turma> turmas = new ArrayList<>();
+
+
+    public Curso() {
+    }
+
+    public Curso(Long id, String nome, Integer quantidadeAlunos, String nivelCurso) {
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.quantidadeAlunos = quantidadeAlunos;
+        this.nivelCurso = nivelCurso;
+    }
+
     public Long getIdCurso() {
         return id;
     }
@@ -40,11 +53,11 @@ public class Curso implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
+    public String getNomeCurso() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNomeCurso(String nome) {
         this.nome = nome;
     }
 
@@ -68,7 +81,4 @@ public class Curso implements Serializable {
         return turmas;
     }
 
-    public void setTurmas(List<Turma> turmas) {
-        this.turmas = turmas;
-    }
 }

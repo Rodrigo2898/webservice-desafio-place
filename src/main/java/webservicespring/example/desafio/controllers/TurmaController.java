@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import webservicespring.example.desafio.entities.Turma;
 import webservicespring.example.desafio.services.TurmaService;
 
-
-
 @RestController
 @RequestMapping(value = "/turmas")
 public class TurmaController {
@@ -22,8 +20,7 @@ public class TurmaController {
     TurmaController(TurmaService turmaService) {
         this.turmaService = turmaService;
     }
-
-    
+	
     @GetMapping
 	public ResponseEntity<List<Turma>> findAll() {
 		List<Turma> list = turmaService.findAll();

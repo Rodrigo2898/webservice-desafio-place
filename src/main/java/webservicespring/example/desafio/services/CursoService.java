@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -13,6 +14,7 @@ import webservicespring.example.desafio.repositories.CursoRepository;
 import webservicespring.example.desafio.services.exceptions.DatabaseException;
 import webservicespring.example.desafio.services.exceptions.ResourceNotFoundException;
 
+@Service
 public class CursoService {
     private final CursoRepository cursoRepository;
 
@@ -57,7 +59,7 @@ public class CursoService {
     }
 
     private void updateData(Curso entity, Curso obj) {
-        entity.setNome(obj.getNome());
+        entity.setNomeCurso(obj.getNomeCurso());
         entity.setQuantidadeAlunos(obj.getQuantidadeAlunos());
         entity.setNivelCurso(obj.getNivelCurso());
     }

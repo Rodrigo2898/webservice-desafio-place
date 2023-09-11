@@ -3,9 +3,12 @@ package webservicespring.example.desafio.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import webservicespring.example.desafio.entities.Turma;
 import webservicespring.example.desafio.repositories.TurmaRepository;
 
+@Service
 public class TurmaService {
     private final TurmaRepository turmaRepository;
 
